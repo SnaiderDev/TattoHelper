@@ -2,14 +2,14 @@ import express from "express";
 //exportacion de la funcion de la base de datos
 import connectDB from "../config/db.js";
 //exportacion del primer modelo
-import project from "../models/project.js";
+import needleType from "../models/needleType.js";
 
 const app = express();
 
 //Retorno de informacion de proyectos
 app.get("/", async (req, res) => {
   try {
-    const data = await project.find({}); // Buscar todos los proyectos
+    const data = await needleType.find({}); // Buscar todos los proyectos
     res.json(data); // Responder con el JSON correctamente
   } catch (error) {
     console.error("This is not possible ", error);
