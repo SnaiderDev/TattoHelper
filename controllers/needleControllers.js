@@ -4,9 +4,13 @@ import needle from "../models/needle.js"
 //consulta de todos los tipos de las agujas
 export async function getAllNeedleTypes (req,res){
     try {
-        const needleTypes = await needle.find({})
-        console.log(needleTypes)
-        res.json(needleTypes)
+        const data = await needle.find({})
+        const needleTypes = data.map((type)=>({
+            name: type.name,
+            shortName: type.shortName,
+            overview: type.overview
+        }))
+        return needleTypes
     } catch (error) {
       console.log('This is not possible' +error)
     }

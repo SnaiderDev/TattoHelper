@@ -9,7 +9,7 @@ const app = express();
 const PORT = 3000;
 
 // Registrar el router para la ruta /needle/:shortname
-app.use('/needle', needleRoutes);
+app.use('/needles', needleRoutes);
 
 
 //comprobacion de la disponibilidad del puerto
