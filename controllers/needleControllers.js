@@ -1,8 +1,9 @@
 import { json } from "express"
+import pc from 'picocolors'
 import needle from "../models/needle.js"
 
 //consulta de todos los tipos de las agujas
-export async function getAllNeedleTypes (req,res){
+export async function getAllNeedleTypes (){
     try {
         const data = await needle.find({})
         const needleTypes = data.map((type)=>({
@@ -12,7 +13,7 @@ export async function getAllNeedleTypes (req,res){
         }))
         return needleTypes
     } catch (error) {
-      console.log('This is not possible' +error)
+      console.error(pc.yellow(`This is not possible!!! ${error}`))
     }
 }
 
@@ -22,6 +23,6 @@ export async function getNeedleDetails (shortName){
         const needleNumbers = await needle.find({shortName:shortName})
         return (needleNumbers)
     } catch (error) {
-        console.log('This is not possible'+ error)
+        console.error(pc.yellow(`This is not possible!!! ${error}`))
     }
 }
